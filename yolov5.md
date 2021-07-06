@@ -1,5 +1,5 @@
-# YOLOv5 example
-Example repository for running machine learning using YOLOv5 on PyTorch
+# YOLOv5 guide
+Guide for running machine learning using YOLOv5
 
 ## Environment
 Python v3.5+
