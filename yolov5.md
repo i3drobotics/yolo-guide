@@ -2,7 +2,8 @@
 Guide for running machine learning using YOLOv5
 
 ## Environment
-Python v3.5+
+Python v3.5+  
+Bash terminal (Use [git bash](https://git-scm.com/downloads) on Windows)
 
 ## Data structure
 Data is not provided in this repository but the following data structure is expected:
@@ -35,7 +36,10 @@ names: ['cat','dog']
 ```
 
 ## Download data
-If you are using private data hosted on the i3drml account use the following commands to download the dataset.zip for the data you are using to train.
+If you are using private data hosted on the i3drml account use the following commands to download the dataset.zip for the data you are using to train.  
+
+### Setup gshell
+This only works in linux, if you are using windows you will need to download the data manually.  
 
 Install gshell
 ```
@@ -53,6 +57,7 @@ e.g.
 ```
 gshell download TrainedModels/Sharps/YOLOv5/data/dataset/dataset.zip
 ```
+### Extract data
 Extract data to current directory
 ```
 mkdir dataset

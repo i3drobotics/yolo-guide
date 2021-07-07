@@ -3,7 +3,7 @@ Guide for running machine learning using YOLOv4 on darknet
 
 ## Environment
 Python v3.5+  
-Bash terminal
+Bash terminal (Use [git bash](https://git-scm.com/downloads) on Windows)
 
 ## Data structure
 Data is not provided in this repository but the following data structure is expected:
@@ -30,7 +30,10 @@ ball
 index of objects in file should match the object index in the label files
 
 ## Download data
-If you are using private data hosted on the i3drml account use the following commands to download the dataset.zip for the data you are using to train.
+If you are using private data hosted on the i3drml account use the following commands to download the dataset.zip for the data you are using to train.  
+
+### Setup gshell
+This only works in linux, if you are using windows you will need to download the data manually.  
 
 Install gshell
 ```
@@ -48,6 +51,7 @@ e.g.
 ```
 gshell download TrainedModels/Sharps/darknet/data/dataset/dataset.zip
 ```
+### Extract data
 Extract data to current directory
 ```
 mkdir dataset
@@ -63,13 +67,16 @@ git clone https://github.com/roboflow-ai/darknet.git
 Download the newly released yolov4 ConvNet weights
 ```bash
 cd darknet/
-wget https://github.com/AlexeyAB/darknet/releases/download/darknet_yolo_v3_optimal/yolov4.conv.137
+curl -L https://github.com/AlexeyAB/darknet/releases/download/darknet_yolo_v3_optimal/yolov4.conv.137 --output yolov4.conv.137
 ```
 Install opencv  
-See [here](https://docs.opencv.org/4.5.2/d3/d52/tutorial_windows_install.html) for windows install instructions. Make sure OPENCV_DIR environment variable is set. 
+Make sure OPENCV_DIR environment variable is set. See [opencv-windows.md](opencv-windows.md) for details or following the official guide from OpenCV [here](https://docs.opencv.org/4.5.2/d3/d52/tutorial_windows_install.html). 
 ```
 sudo apt install libopencv-dev
 ```
+Install CUDA (optional)  
+For CUDA support you will need to install CUDA and cuDNN. See [cuda-windows.md](cuda-windows.md) for details or following the official guide from NVIDIA for CUDA toolkit [here](https://docs.nvidia.com/cuda/cuda-installation-guide-microsoft-windows/index.html) and CUDNN [here](https://docs.nvidia.com/deeplearning/cudnn/install-guide/index.html).
+
 Build darknet from makefile
 You may need to adjust this for different CUDA hardware  
 ```
