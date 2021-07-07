@@ -74,6 +74,10 @@ Clone YOLOv5 github repository
 ```
 git clone https://github.com/ultralytics/yolov5
 ```
+Install torch CUDA (optional)
+```
+python -m pip install torch==1.9.0+cu111 torchvision==0.10.0+cu111 -f https://download.pytorch.org/whl/torch_stable.html
+```
 Install requirements (python3)
 ```
 cd yolov5

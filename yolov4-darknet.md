@@ -77,7 +77,7 @@ sudo apt install libopencv-dev
 Install CUDA (optional)  
 For CUDA support you will need to install CUDA and cuDNN. See [cuda-windows.md](cuda-windows.md) for details or following the official guide from NVIDIA for CUDA toolkit [here](https://docs.nvidia.com/cuda/cuda-installation-guide-microsoft-windows/index.html) and CUDNN [here](https://docs.nvidia.com/deeplearning/cudnn/install-guide/index.html).
 
-Build darknet from makefile
+#### Build darknet from makefile (linux)
 You may need to adjust this for different CUDA hardware  
 ```
 cd darknet/
@@ -94,6 +94,26 @@ sed -i 's/GPU=1/GPU=0/g' Makefile
 sed -i 's/CUDNN=1/CUDNN=0/g' Makefile
 make
 ```
+
+#### Build darknet using vcpkg (windows)
+1. Install or update Visual Studio to at least version 2017, making sure to have it fully patched (run again the installer if not sure to automatically update to latest version). If you need to install from scratch, download VS from here: [Visual Studio Community](http://visualstudio.com)
+
+3. Install `git` and `cmake`. Make sure they are on the Path at least for the current account
+
+4. Install [vcpkg](https://github.com/Microsoft/vcpkg) and try to install a test library to make sure everything is working, for example `vcpkg install opengl`
+
+5. Define an environment variables, `VCPKG_ROOT`, pointing to the install path of `vcpkg`
+
+6. Define another environment variable, with name `VCPKG_DEFAULT_TRIPLET` and value `x64-windows`
+
+7. Open Powershell and type these commands:
+
+```PowerShell
+PS \>                  cd $env:VCPKG_ROOT
+PS Code\vcpkg>         .\vcpkg install pthreads opencv[ffmpeg] #replace with opencv[cuda,ffmpeg] in case you want to use cuda-accelerated openCV
+```
+
+8.  Open Powershell, go to the `darknet` folder and build with the command `.\build.ps1`. If you want to use Visual Studio, you will find two custom solutions created for you by CMake after the build, one in `build_win_debug` and the other in `build_win_release`, containing all the appropriate config flags for your system.
 
 ### Configure Data
 Create folder to store weights
