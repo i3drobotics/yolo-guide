@@ -58,6 +58,11 @@ Extract data to current directory
 mkdir dataset
 unzip dataset.zip -d dataset
 ```
+Replace the path to your data in the extracted data.yaml file
+```
+sed -i 's#train: /content/train/images#train: ../dataset/train/images#g' dataset/data.yaml
+sed -i 's#val: /content/valid/images#val: ../dataset/valid/images#g' dataset/data.yaml
+```
 
 ## Setup
 Clone YOLOv5 github repository
@@ -67,14 +72,12 @@ git clone https://github.com/ultralytics/yolov5
 Install requirements (python3)
 ```
 cd yolov5
-python -m pip install -qr requirements.txt
+python -m pip install -r requirements.txt
 ```
-Test pytorch is setup
+On some linux machine the following library may also be needed to fix  
+*libGL.so.1: cannot open shared object file: No such file or directory*
 ```
-import torch
-
-clear_output()
-print(f"Setup complete. Using torch {torch.__version__} ({torch.cuda.get_device_properties(0).name if torch.cuda.is_available() else 'CPU'})")
+sudo apt install libgl1-mesa-glx
 ```
 
 ## Train
@@ -83,15 +86,17 @@ Start training using YOLOv5
 python train.py --img 640 --batch 2 --epochs 200 \
     --data ../dataset/data.yaml \
     --cfg models/yolov5s.yaml \
+    --project ../runs/train \
     --weights ' '
 ```
+The resulting weights will be in runs/train/exp/weights/
 
 ## Test
 Test trained model
 ```
 python test.py --iou 0.65 --half \
   --data ../dataset/data.yaml \
-  --weights runs/train/exp/weights/best.pt
+  --weights ../runs/train/exp/weights/best.pt
 ```
 
 ## Inference
@@ -108,7 +113,8 @@ Source can be a wide range of types
 ```
 Replace 'path/to/source/' with chosen source.
 ```
-python detect.py --weights runs/train/exp/weights/best.pt \
+python detect.py \ 
+  --weights ../runs/train/exp/weights/best.pt \
   --img 640 \
   --source path/to/source/
   --exist-ok
