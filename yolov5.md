@@ -8,7 +8,7 @@ Python v3.5+
 Data is not provided in this repository but the following data structure is expected:
 ```
 .
-├── data
+├── dataset
 │   ├── train           # training data
 │   │   ├── images      # training images (.jpg)
 │   │   ├── labels      # object labels for images (.txt)
@@ -27,11 +27,36 @@ e.g. (8 0.49278846153846156 0.5420673076923077 0.7716346153846154 0.677884615384
 ```
 'data.yaml' should contain standard YOLOv5 configuration data e.g.
 ```
-train: path/to/data/train/images
-val: path/to/data/valid/images
+train: ../dataset/train/images
+val: ../dataset/valid/images
 
 nc: 2
 names: ['cat','dog']
+```
+
+## Download data
+If you are using private data hosted on the i3drml account use the following commands to download the dataset.zip for the data you are using to train.
+
+Install gshell
+```
+python -m pip install gshell
+```
+Login to the i3drml google account
+```
+gshell init 
+```
+Download the dataset.zip file from the drive
+```
+gshell download path/to/dataset.zip
+```
+e.g.
+```
+gshell download TrainedModels/Sharps/YOLOv5/data/dataset/dataset.zip
+```
+Extract data to current directory
+```
+mkdir dataset
+unzip dataset.zip -d dataset
 ```
 
 ## Setup
@@ -53,24 +78,24 @@ print(f"Setup complete. Using torch {torch.__version__} ({torch.cuda.get_device_
 ```
 
 ## Train
-Start training using YOLOv5. Replace 'path/to/data/data.yaml' with the path to your data.yaml file. 
+Start training using YOLOv5
 ```
 python train.py --img 640 --batch 2 --epochs 200 \
-    --data path/to/data/data.yaml \
+    --data ../dataset/data.yaml \
     --cfg models/yolov5s.yaml \
     --weights ' '
 ```
 
 ## Test
-Test trained model. Replace 'path/to/data/data.yaml' with the path to your data.yaml file. 
+Test trained model
 ```
 python test.py --iou 0.65 --half \
-  --data path/to/data/data.yaml \
+  --data ../dataset/data.yaml \
   --weights runs/train/exp/weights/best.pt
 ```
 
 ## Inference
-Run inference on trained model. Results are saved to runs/detect. Replace 'path/to/data/valid' with the path to data you want to run the model against.
+Run inference on trained model. Results are saved to runs/detect
 Source can be a wide range of types
 ```
 --source 0 # webcam
@@ -81,9 +106,10 @@ Source can be a wide range of types
          'https://youtu.be/dQw4w9WgXcQ' #YouTube video
          'rtsp://example.com/media.mp4' #RTSP, RTMP, HTTP stream
 ```
+Replace 'path/to/source/' with chosen source.
 ```
 python detect.py --weights runs/train/exp/weights/best.pt \
   --img 640 \
-  --source source/data
+  --source path/to/source/
   --exist-ok
 ```
