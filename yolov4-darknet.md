@@ -113,6 +113,22 @@ PS \>                  cd $env:VCPKG_ROOT
 PS Code\vcpkg>         .\vcpkg install pthreads opencv[ffmpeg] #replace with opencv[cuda,ffmpeg] in case you want to use cuda-accelerated openCV
 ```
 
+> If you have the following issue:
+> ```
+> CMake Error at scripts/cmake/vcpkg_execute_required_process.cmake:105 (message):
+> Command failed: ninja -v
+> ```
+> Check the logs at 'vcpkg\buildtrees\opencv4\config-x64-windows-out.log' for details on the error. This may happen due to a missing download for NVidia optical flow. 
+> ```
+> Downloads are not permitted during configure. Please pre-download the file "C:/vcpkg/downloads/opencv-cache/nvidia_optical_flow/a73cd48b18dcc0cc8933b30796074191-edb50da3cf849840d680249aa6dbef248ebce2ca.zip":
+> vcpkg_download_distfile(OCV_DOWNLOAD
+>     URLS "https://github.com/NVIDIA/NVIDIAOpticalFlowSDK/archive/edb50da3cf849840d680249aa6dbef248ebce2ca.zip"
+>     FILENAME "opencv-cache/nvidia_optical_flow/a73cd48b18dcc0cc8933b30796074191-edb50da3cf849840d680249aa6dbef248ebce2ca.zip"
+>     SHA512 0
+> )
+> ```
+> You will need to download the file manually from [here](https://github.com/NVIDIA/NVIDIAOpticalFlowSDK/archive/edb50da3cf849840d680249aa6dbef248ebce2ca.zip) and place it in the 'vcpkg/downloads/opencv-cache/nvidia_optical_flow/' folder and rename the zip a73cd48b18dcc0cc8933b30796074191-edb50da3cf849840d680249aa6dbef248ebce2ca.zip.
+
 8.  Open Powershell, go to the `darknet` folder and build with the command `.\build.ps1`. If you want to use Visual Studio, you will find two custom solutions created for you by CMake after the build, one in `build_win_debug` and the other in `build_win_release`, containing all the appropriate config flags for your system.
 
 ### Configure Data
