@@ -2,8 +2,12 @@
 Guide for running machine learning using YOLOv4 on darknet
 
 ## Environment
-Python v3.5+  
-Bash terminal (Use [git bash](https://git-scm.com/downloads) on Windows)
+Python v3.5+
+### Windows
+Bash terminal (e.g. [git bash](https://git-scm.com/downloads))  
+CMake 3.18 or higher ([download](https://cmake.org/download/))
+Visual studio 2017 or higher ([download](https://www.visualstudio.com/downloads/))
+vcpkg ([download](https://github.com/Microsoft/vcpkg))
 
 ## Data structure
 Data is not provided in this repository but the following data structure is expected:
@@ -62,7 +66,7 @@ unzip dataset.zip -d dataset
 ### Darknet
 Download darknet from repository
 ```bash
-git clone https://github.com/roboflow-ai/darknet.git
+git clone https://github.com/AlexeyAB/darknet.git
 ```
 Download the newly released yolov4 ConvNet weights
 ```bash

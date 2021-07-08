@@ -35,7 +35,7 @@ print("writing config for a custom YOLOv4 detector detecting number of classes: 
 
 #change line max_batches to (classes*2000 but not less than number of training images, and not less than 6000), f.e. max_batches=6000 if you train for 3 classes
 #change line steps to 80% and 90% of max_batches, f.e. steps=4800,5400
-if os.path.exists('../darknet/cfg/custom-yolov4-detector.cfg'): os.remove('../darknet/custom-yolov4-detector.cfg')
+if os.path.exists('../darknet/cfg/custom-yolov4-detector.cfg'): os.remove('../darknet/cfg/custom-yolov4-detector.cfg')
 
 with open('../darknet/cfg/custom-yolov4-detector.cfg', 'a') as f:
   f.write('[net]' + '\n')
@@ -68,7 +68,7 @@ with open('../darknet/cfg/custom-yolov4-detector.cfg', 'a') as f:
 #change line classes=80 to your number of objects in each of 3 [yolo]-layers:
 #change [filters=255] to filters=(classes + 5)x3 in the 3 [convolutional] before each [yolo] layer, keep in mind that it only has to be the last [convolutional] before each of the [yolo] layers.
 
-  with open('../darknet/cfg/yolov4-custom2.cfg', 'r') as f2:
+  with open('../cfg/yolov4-custom2.cfg', 'r') as f2:
     content = f2.readlines()
     for line in content:
       f.write(line)    
@@ -82,7 +82,7 @@ with open('../darknet/cfg/custom-yolov4-detector.cfg', 'a') as f:
     f.write('anchors = 12, 16, 19, 36, 40, 28, 36, 75, 76, 55, 72, 146, 142, 110, 192, 243, 459, 401' + '\n')
     f.write('classes=' + str(num_classes) + '\n')
 
-  with open('../darknet/cfg/yolov4-custom3.cfg', 'r') as f3:
+  with open('../cfg/yolov4-custom3.cfg', 'r') as f3:
     content = f3.readlines()
     for line in content:
       f.write(line)    
@@ -96,7 +96,7 @@ with open('../darknet/cfg/custom-yolov4-detector.cfg', 'a') as f:
     f.write('anchors = 12, 16, 19, 36, 40, 28, 36, 75, 76, 55, 72, 146, 142, 110, 192, 243, 459, 401' + '\n')
     f.write('classes=' + str(num_classes) + '\n')
 
-  with open('../darknet/cfg/yolov4-custom4.cfg', 'r') as f4:
+  with open('../cfg/yolov4-custom4.cfg', 'r') as f4:
     content = f4.readlines()
     for line in content:
       f.write(line)    
@@ -110,7 +110,7 @@ with open('../darknet/cfg/custom-yolov4-detector.cfg', 'a') as f:
     f.write('anchors = 12, 16, 19, 36, 40, 28, 36, 75, 76, 55, 72, 146, 142, 110, 192, 243, 459, 401' + '\n')
     f.write('classes=' + str(num_classes) + '\n')
     
-  with open('../darknet/cfg/yolov4-custom5.cfg', 'r') as f5:
+  with open('../cfg/yolov4-custom5.cfg', 'r') as f5:
     content = f5.readlines()
     for line in content:
       f.write(line)
