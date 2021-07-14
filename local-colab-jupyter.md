@@ -16,6 +16,11 @@ Enable the extension
 ```
 jupyter serverextension enable --py jupyter_http_over_ws
 ```
+Create a folder to run the notebook
+```
+mkdir ~/colab_notebook
+cd ~/colab_notebook
+```
 
 ## Start
 Start jupyter notebook server
