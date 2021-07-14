@@ -38,7 +38,7 @@ Or copy and paste one of these URLs:
     http://localhost:8888/?token=3db147cc33b2ae3148877cbcb42d964f9d5c8207821a9cf2
 or http://127.0.0.1:8888/?token=3db147cc33b2ae3148877cbcb42d964f9d5c8207821a9cf2
 ```
-In Colab, click the “Connect” button and select “Connect to local runtime”. Enter the URL you just copied and click “Connect”:
+Open the Colab notebook you wish to use from the Google Colab website, click the “Connect” button and select “Connect to local runtime”. Enter the URL you just copied and click “Connect”:
 ```
 http://localhost:8888/?token=3db147cc33b2ae3148877cbcb42d964f9d5c8207821a9cf2
 ```
