@@ -115,7 +115,7 @@ Replace 'path/to/source/' with chosen source.
 python detect.py \ 
   --weights ../runs/train/exp/weights/best.pt \
   --img 640 \
-  --source path/to/source/
+  --source path/to/source/ \
   --exist-ok
 ```
 source can be a wide range of types
