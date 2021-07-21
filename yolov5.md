@@ -110,7 +110,15 @@ python test.py --iou 0.65 --half \
 
 ## Inference
 Run inference on trained model. Results are saved to runs/detect
-Source can be a wide range of types
+Replace 'path/to/source/' with chosen source.
+```
+python detect.py \ 
+  --weights ../runs/train/exp/weights/best.pt \
+  --img 640 \
+  --source path/to/source/
+  --exist-ok
+```
+source can be a wide range of types
 ```
 --source 0 # webcam
          file.jpg #image
@@ -119,12 +127,4 @@ Source can be a wide range of types
          path/*.jpg #glob
          'https://youtu.be/dQw4w9WgXcQ' #YouTube video
          'rtsp://example.com/media.mp4' #RTSP, RTMP, HTTP stream
-```
-Replace 'path/to/source/' with chosen source.
-```
-python detect.py \ 
-  --weights ../runs/train/exp/weights/best.pt \
-  --img 640 \
-  --source path/to/source/
-  --exist-ok
 ```
